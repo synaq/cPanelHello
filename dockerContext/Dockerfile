@@ -22,5 +22,6 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 RUN composer global require kherge/box --prefer-dist
 RUN pecl install xdebug
 RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so" > /usr/local/etc/php/conf.d/pecl-xdebug.ini
+RUN ln -sf /root/.composer/vendor/bin/box /usr/local/bin/box
 
-CMD "php -a"
+CMD "/usr/local/bin/php"
