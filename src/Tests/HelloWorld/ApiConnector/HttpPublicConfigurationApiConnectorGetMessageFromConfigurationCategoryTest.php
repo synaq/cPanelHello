@@ -33,6 +33,15 @@ class HttpPublicConfigurationApiConnectorGetMessageFromConfigurationCategoryTest
         $this->client->shouldHaveReceived('get')->once();
     }
 
+    /**
+     * @test
+     */
+    public function callsGetOnTheStagingConfigurationApiEndpoint()
+    {
+        $this->connector->getMessageFromConfigurationCategory();
+        $this->client->shouldHaveReceived('get')->with('https://sta-q.synaq.com/public-api/v1/configs/cPanelHello');
+    }
+
     protected function setUp()
     {
         $this->client = m::mock(Client::class);
