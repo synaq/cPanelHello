@@ -15,5 +15,10 @@
             "name": "Willem Viljoen",
             "email": "willemv@synaq.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Synaq\\": "src/Synaq/"
+        }
+    }
 }
