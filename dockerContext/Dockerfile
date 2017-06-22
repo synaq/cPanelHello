@@ -23,5 +23,13 @@ RUN composer global require kherge/box --prefer-dist
 RUN pecl install xdebug
 RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so" > /usr/local/etc/php/conf.d/pecl-xdebug.ini
 RUN ln -sf /root/.composer/vendor/bin/box /usr/local/bin/box
+RUN echo "xdebug.remote_host="`/sbin/ip route | /usr/bin/awk '/default/ { print $3 }'` >> /usr/local/etc/php/conf.d/pecl-xdebug.ini
+RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
+    echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
+    echo "xdebug.remote_connect_back=off" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
+    echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
+    echo "xdebug.profiler_enable=0" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
+    echo 'xdebug.profiler_output_dir="/opt/project"' >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
+    echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini
 
 CMD "/usr/local/bin/php"
