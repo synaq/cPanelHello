@@ -21,11 +21,6 @@ class DependencyInjectionContainerFactoryCreateTest extends \PHPUnit_Framework_T
     private $container;
 
     /**
-     * @var DependencyInjectionContainerFactory
-     */
-    private $factory;
-
-    /**
      * @test
      */
     public function returnsDiceDependencyInjectionContainer()
@@ -44,7 +39,6 @@ class DependencyInjectionContainerFactoryCreateTest extends \PHPUnit_Framework_T
 
     protected function setUp()
     {
-        $this->factory = new DependencyInjectionContainerFactory();
-        $this->container = $this->factory->create();
+        $this->container = DependencyInjectionContainerFactory::create();
     }
 }

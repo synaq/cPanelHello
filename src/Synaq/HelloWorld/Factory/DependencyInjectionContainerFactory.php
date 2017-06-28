@@ -15,7 +15,7 @@ use Synaq\HelloWorld\ApiConnector\PublicConfigurationApiConnectorInterface;
 
 class DependencyInjectionContainerFactory
 {
-    public function create()
+    public static function create()
     {
         $container = new Dice();
         $container->addRule(PublicConfigurationApiConnectorInterface::class, [
