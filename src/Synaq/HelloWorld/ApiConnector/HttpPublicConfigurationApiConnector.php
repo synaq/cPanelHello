@@ -25,8 +25,9 @@ class HttpPublicConfigurationApiConnector implements PublicConfigurationApiConne
 
     public function getMessageFromConfigurationCategory()
     {
-        $this->client->get('https://sta-q.synaq.com/public-api/v1/configs/cPanelHello');
+        $response = $this->client->get('https://sta-q.synaq.com/public-api/v1/configs/cPanelHello');
+        $result = json_decode($response->getBody(), true);
 
-        return 'Some API Message';
+        return $result['message'];
     }
 }

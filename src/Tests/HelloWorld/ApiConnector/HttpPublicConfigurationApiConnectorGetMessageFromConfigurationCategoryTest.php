@@ -52,6 +52,15 @@ class HttpPublicConfigurationApiConnectorGetMessageFromConfigurationCategoryTest
         $this->assertEquals('Some API Message', $this->connector->getMessageFromConfigurationCategory());
     }
 
+    /**
+     * @test
+     */
+    public function acceptsAnyMessageFromTheApi()
+    {
+        $this->client->shouldReceive('get')->andReturn($this->httpOkayResponseWithMessage('Any API Message'));
+        $this->assertEquals('Any API Message', $this->connector->getMessageFromConfigurationCategory());
+    }
+
     protected function setUp()
     {
         $this->client = m::mock(Client::class);
