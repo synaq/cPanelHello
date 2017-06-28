@@ -10,6 +10,8 @@ namespace Tests\Library;
 
 
 
+use Synaq\HelloWorld\ApiConnector\PublicConfigurationApiConnectorInterface;
+
 class LibraryIncludeTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -19,5 +21,15 @@ class LibraryIncludeTest extends \PHPUnit_Framework_TestCase
     {
         include __DIR__ . '/../../../lib/cPanelHello.php';
         $this->assertTrue(isset($apiConnector));
+    }
+
+    /**
+     * @test
+     */
+    public function assignsAnApiConnectorToTheApiConnectorGlobalVariable()
+    {
+        $apiConnector = null;
+        include __DIR__ . '/../../../lib/cPanelHello.php';
+        $this->assertInstanceOf(PublicConfigurationApiConnectorInterface::class, $apiConnector);
     }
 }
