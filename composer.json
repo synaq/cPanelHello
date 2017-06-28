@@ -3,7 +3,8 @@
     "description": "cPanel Hello World POC Plugin",
     "type": "library",
     "require": {
-        "synaq/http-client": "^1.0"
+        "synaq/http-client": "^1.0",
+        "level-2/dice": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
