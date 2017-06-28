@@ -21,5 +21,14 @@
         "psr-4": {
             "Synaq\\": "src/Synaq/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": "mkdir -p dist/",
+        "post-update-cmd": "@post-install-cmd",
+        "build": [
+            "@composer -o --no-dev --prefer-dist install",
+            "box build -v",
+            "@composer -o --prefer-dist install"
+        ]
     }
 }

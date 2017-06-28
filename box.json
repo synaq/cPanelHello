@@ -1,0 +1,7 @@
+{
+  "directories": ["src", "lib", "vendor"],
+  "main": "lib/cPanelHello.php",
+  "output": "dist/cPanelHello.phar",
+  "stub": true,
+  "shebang": false
+}

@@ -31,5 +31,11 @@ RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini 
     echo "xdebug.profiler_enable=0" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
     echo 'xdebug.profiler_output_dir="/opt/project"' >> /usr/local/etc/php/conf.d/pecl-xdebug.ini && \
     echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/pecl-xdebug.ini
+RUN echo "phar.readonly = off" > /usr/local/etc/php/conf.d/phar.ini
+WORKDIR /tmp/composerCache
+COPY composer.json ./
+COPY composer.lock ./
+RUN composer install --no-scripts --no-autoloader --prefer-dist
+WORKDIR /opt/project
 
 CMD "/usr/local/bin/php"
