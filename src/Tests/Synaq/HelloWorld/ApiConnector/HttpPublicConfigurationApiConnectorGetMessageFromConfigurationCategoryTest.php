@@ -6,7 +6,7 @@
  * Time: 08:58
  */
 
-namespace Tests\HelloWorld\ApiConnector;
+namespace Tests\Synaq\HelloWorld\ApiConnector;
 
 use Mockery as m;
 use Synaq\HelloWorld\ApiConnector\HttpPublicConfigurationApiConnector;
